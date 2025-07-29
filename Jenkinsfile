@@ -1,15 +1,13 @@
-pipeline{
-  agent any{
-    stages{
-      stage('build')
-      {
-        echo 'Building'
-        echo 'hello'
-      }
-      stage('test')
-      {
-        echo 'testing'
-      }
+pipeline {
+    agent any
+    triggers {
+        githubPush()
     }
-  }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Build triggered!'
+            }
+        }
+    }
 }
